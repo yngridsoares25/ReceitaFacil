@@ -17,11 +17,11 @@ $email = $_GET['email'];
 
         $sql = "INSERT INTO cadastro_form.dados_pessoais (nome, senha, email) VALUES ('$nome', '$senhaUsuario', '$email')";
         if ($conecta->query($sql) === TRUE) {
-            echo "Novo registro criado com sucesso";
+            header('Location: ../index.php?mensagemOK=Novo registro criado com sucesso');
         } else {
             echo "Erro: " . $sql . "<br>" . $conecta->error . "<br>";
         }
         $conecta->close();
 
-         header('Location: index.php');
+        header('Location: ../index.php?mensagemOK=Novo registro criado com sucesso');
  ?>

@@ -19,13 +19,15 @@ $email = $_GET['email'];
         if ($resultado->num_rows > 0) {
             $resultado = $resultado->fetch_assoc();
            if( $resultado["senha"] == $senhaUsuario){
-               header('Location: principal.php');
+               session_start();
+               $_SESSION['username'] = $email;
+               header('Location: ../pages/principal.php');
            }else{
-               header('Location: index.php?mensagem=Senha inválida');
+               header('Location: ../index.php?mensagem=Senha inválida');
            }
 
         } else {
-        echo "0 results";
+            header('Location: ../index.php?mensagem=Usuário não cadastrado!');
         }
         // header('Location: index.php');
  ?>

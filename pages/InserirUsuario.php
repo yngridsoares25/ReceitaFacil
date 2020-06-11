@@ -10,17 +10,17 @@
 
     <title>INSPINIA | Login</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <style>
         .classeFundo {
             height: 500px;
             width: 500px;
-            background-image: url("img/footer-bg.jpg");
+            background-image: url("../img/footer-bg.jpg");
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -35,18 +35,14 @@
 </head>
 <?php 
        if(isset($_GET['mensagem'])){
-             echo "<div class='alert alert-warning' role='alert'>"  .$_GET['mensagem']."</div>";
+           echo "<div class='alert alert-warning' role='alert'>"  .$_GET['mensagem']."</div>";
        }
-
-       if(isset($_GET['mensagemOK'])){
-             echo "<div class='alert alert-success' role='alert'>"  .$_GET['mensagemOK']."</div>";
-        }
 ?>
 <body class="gray-bg">
 
     <div id="fundo-externo">
         <div id="fundo">
-            <img src="img/footer-bg.jpg" alt="" />
+            <img src="../img/footer-bg.jpg" alt="" />
         </div>
 
         <div class="middle-box text-center loginscreen animated fadeInDown">
@@ -56,23 +52,26 @@
                     <h1 class="logo-name">RF+</h1>
 
                 </div>
-                <h3 style="color: coral;"> Bem vindo ao Receita Fácil+</h3>
+                <h3 style="color: coral;">Crie sua conta no  Receita Fácil+</h3>
                 <p style="color: coral;">O portal de receitas mais simplés do Brasil.
                     <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
                 </p>
                 <p style="color:honeydew">Entrar</p>
-                <form class="m-t" role="form" action="repositorio/validarUsuario.php" method="GET" class="form-group">
+                <form class="m-t" role="form" action="../repositorio/inserirDados.php" method="GET" class="form-group">
+                
+                    <div class="form-group">
+                      <input type="text" name="nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu Nome">
+                    </div>
                     <div class="form-group">
                         <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required="">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="">
                     </div>
-                    <button type="submit" class="btn btn-primary block full-width m-b">Entrar</button>
-
-                
-                    <p class="text-center" style="color: black;"><small>Não tenho uma conta?</small></p>
-                    <a class="btn btn-sm  btn-secondary btn-block" href="pages/InserirUsuario.php">Cadastra-se</a>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="senhaConfirme" name="senhaConfirme" placeholder="Confirme sua senha" required="">
+                    </div>
+                    <button type="submit" class="btn btn-primary block full-width m-b">Cadastra-se</button>
                 </form>
 
             </div>
