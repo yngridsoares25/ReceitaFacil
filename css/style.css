@@ -2051,15 +2051,15 @@ button:focus {
 
 .btn-primary {
     color: #fff;
-    background-color: #1ab394;
-    border-color: #1ab394;
+    background-color: #ff7c00;
+    border-color: #ff7c00;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus {
-    background-color: #18a689;
-    border-color: #18a689;
+    background-color: #cecece;
+    border-color: #cecece;
     color: #FFFFFF;
 }
 

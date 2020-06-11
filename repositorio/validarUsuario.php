@@ -21,6 +21,8 @@ $email = $_GET['email'];
            if( $resultado["senha"] == $senhaUsuario){
                session_start();
                $_SESSION['username'] = $email;
+               $_SESSION['nome'] = $resultado["nome"];
+               
                header('Location: ../pages/principal.php');
            }else{
                header('Location: ../index.php?mensagem=Senha inválida');

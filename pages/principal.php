@@ -13,10 +13,37 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+   <title>Live Dinner Restaurant - Responsive HTML5 Template</title>  
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <!-- Site Icons -->
+   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="../css/animate.css" rel="stylesheet">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">    
+    <!-- Site CSS -->   
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="css/responsive.css">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="css/custom.css">
+  <link href="css/style.css" rel="stylesheet">
+
 </head>
 <?php 
       session_start();
-      echo $_SESSION['username'];
+      //echo $_SESSION['username'];
        if(!isset($_SESSION['username'])){
           header('Location: index.php?mensagem=Usuário não logado!');
        }
@@ -24,132 +51,116 @@
 
 ?>
 
-<body style="background-color: #4b23528c;">
-    <div class="container">
-        <h3>Mapa</h3>
-        <div class="row align-items-center">
-        <div class="col">  
-                <iframe
-                    width="600"
-                    height="450"
-                    frameborder="0" style="border:0"
-                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBsTkJZ65tIlUg2zAd2_zyt8ADm4fQnxNM
-                    &q=Brasilia+DF" allowfullscreen>
-                   </iframe>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="row align-items-center">
-             <div class="col"> 
-                  <a href="paginaInserir.php" class="btn btn-primary">Novo Usuário</a>
-             
-             </div>
-            
-            
-             <div class="col">
-                    <h3>Cadastro de Usuário</h3>
-             </div>
-             <div class="col">
-                 
-            </div    >  
-
-
-        </div> 
-    </div>    
-<div class="container" style="background-color: #afafafb8;">
-              
- <div class="row align-items-center">
-     
- </div>
-
-</div>
-    <div class="container">
-        
-        <div class="row align-items-center">
-             
-             <div class="col">
-                    <h3>Pesquisar</h3>
-                  
-             </div>
+<body>
+    <!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
       
-        </div> 
-    </div>
-     <div class="container" style="background-color: #afafafb8;">
-        <div class="row align-items-center">
-            
-             <div class="col">
-               
-                     <form action="principal.php" method="GET" class="form-group">
-        
-                        <div class="form-group">
-                         <label for="exampleInputEmail1">Digite seu nome</label>
-                         <input type="text" name="nomePesquisa" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu Nome">
+			<div class="container">
 
-                        </div> 
+       
+				<a class="navbar-brand" href="index.html">
+  
+          <h1 class="logo-name">RF+</h1>
+   
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="reservation.html">Reservation</a>
+								<a class="dropdown-item" href="stuff.html">Stuff</a>
+								<a class="dropdown-item" href="gallery.html">Gallery</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="blog.html">blog</a>
+								<a class="dropdown-item" href="blog-details.html">blog Single</a>
+							</div>
+						</li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li><br>
+            <li>
+                          <div class="dropdown profile-element">
+                          <img alt="image" class="rounded-circle" src="../img/profile_small.jpg"/></br>
+                          <span class="block m-t-xs font-bold"> <?php echo $_SESSION['nome']?> </span>
+            </li>             
+        </div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+	
+	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-left">
+				<img src="images/slider-01.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Bem vindo ao  <br> Receita fácil</strong></h1>
+							<p class="m-b-40">Aqui você compartilha aquela receita deliciosa! <br> 
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Postar uma receita</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-left">
+				<img src="images/slider-02.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+            <h1 class="m-b-20"><strong>Bem vindo ao  <br> Receita fácil</strong></h1>
+							<p class="m-b-40">Aproveita as receitas de outras pessoas ! <br> 
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver receitas</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-left">
+				<img src="images/slider-03.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+              <h1 class="m-b-20"><strong>Bem vindo ao  <br> Receita fácil</strong></h1>
+							<p class="m-b-40">Disperte o chefe que há dentro de você ! <br> 
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Avaliar</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<!-- End slides -->
+	
 
-                      <button type="submit" class="btn btn-primary">Pesquisar</button>
-                     
-                    </form>
-                   
-             </div>
-            
-            
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                       <?php
-
-                              if(isset($_GET['nomePesquisa'])) {   
-
-                                      $nome = $_GET['nomePesquisa'];
-
-
-
-                                      $nome_servidor="35.205.150.43";
-                                      $nome_usuario = "root";
-                                      $senha = "c8h2p6m5";
-                                       $conecta = new mysqli($nome_servidor,$nome_usuario,$senha);
-                                       if($conecta ->connect_error){
-                                           die("Conexão falhou:".$conecta->connet_error."<br>");
-                                       }
-
-                                        if($nome==""){  
-                                          $sql = "SELECT id, nome, email FROM cadastro_form.dados_pessoais";
-                                        }else{
-                                          $sql = "SELECT id, nome, email FROM cadastro_form.dados_pessoais where nome like'%" .$nome . "%'"   ;
-                                        }
-
-                                      $resultado = $conecta->query($sql);
-                                      if ($resultado->num_rows > 0) {
-                                      // saída dos dados
-                                      while($linha = $resultado->fetch_assoc()) {
-                                       echo "<tr><th scope='row'>". $linha["id"]."</th>" ;  
-                                               echo "<td>" . $linha["nome"]. "</td> <td>" . $linha["email"]. "</td><td><a  href='excluirDados.php?id=" .$linha["id"]. "'  class='btn btn-primary'  role='button'>Excluir</a>&nbsp<a  href='alterarDados.php?id=" .$linha["id"]. "&nome=".$linha["nome"]."&email=".$linha["email"]."'  class='btn btn-primary'  role='button'>Alterar</a></td>";
-                                       echo "</tr>";
-                                       }
-                                      } else {
-                                      echo "0 results";
-                                      }
-
-                                      $conecta->close();
-                              }         
-                      // header('Location: index.php');
-               ?>
-
-
-                </tbody>
-              </table>
-        </div> 
-    </div>
+	<!-- ALL JS FILES -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/images-loded.min.js"></script>
+	<script src="js/isotope.min.js"></script>
+	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
 </body>
 
 </html>
