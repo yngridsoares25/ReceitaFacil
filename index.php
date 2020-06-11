@@ -2,7 +2,9 @@
 <html>
 
 <head>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,8 +25,19 @@
             background-repeat: no-repeat;
         }
     </style>
-</head>
+    <script>
 
+        setTimeout(function() { 
+         $(".alert").alert('close');
+        }, 5000);
+
+     </script>
+</head>
+<?php 
+       if(isset($_GET['mensagem'])){
+           echo "<div class='alert alert-warning' role='alert'>"  .$_GET['mensagem']."</div>";
+       }
+?>
 <body class="gray-bg">
 
     <div id="fundo-externo">
@@ -44,12 +57,12 @@
                     <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
                 </p>
                 <p style="color:honeydew">Entrar</p>
-                <form class="m-t" role="form" action="index.html">
+                <form class="m-t" role="form" action="validarUsuario.php" method="GET" class="form-group">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Usuário" required="">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required="">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Senha" required="">
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="">
                     </div>
                     <button type="submit" class="btn btn-primary block full-width m-b">Entrar</button>
 
