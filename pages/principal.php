@@ -45,7 +45,7 @@
       session_start();
       //echo $_SESSION['username'];
        if(!isset($_SESSION['username'])){
-          header('Location: index.php?mensagem=Usuário não logado!');
+          header('Location: ../index.php?mensagem=Usuário não logado!');
        }
 
 
@@ -56,10 +56,10 @@
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
       
-			<div class="container">
+			<div class="container col-md-11">
 
        
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="principal.php">
   
           <h1 class="logo-name">RF+</h1>
    
@@ -69,31 +69,23 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="reservation.html">Reservation</a>
-								<a class="dropdown-item" href="stuff.html">Stuff</a>
-								<a class="dropdown-item" href="gallery.html">Gallery</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="blog.html">blog</a>
-								<a class="dropdown-item" href="blog-details.html">blog Single</a>
-							</div>
-						</li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li><br>
+            <li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Todas as Receitas</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Doces</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Massas</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Carnes</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Saladas</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Guarnições</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="principal.php">Drinks</a></li><br>
+            <li class="nav-item"><a class="nav-link" href="principal.php">Contato</a></li><br>
+            <li class="nav-item"><a class="nav-link" href="../index.php">Sair</a></li><br>
             <li>
                           <div class="dropdown profile-element">
                           <img alt="image" class="rounded-circle" src="../img/profile_small.jpg"/></br>
                           <span class="block m-t-xs font-bold"> <?php echo $_SESSION['nome']?> </span>
+                          </div>
             </li>             
-        </div>
+        
 					</ul>
 				</div>
 			</div>
@@ -111,7 +103,7 @@
 						<div class="col-md-12">
 							<h1 class="m-b-20"><strong>Bem vindo ao  <br> Receita fácil</strong></h1>
 							<p class="m-b-40">Aqui você compartilha aquela receita deliciosa! <br> 
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Postar uma receita</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="CadastroReceita.php">Postar uma receita</a></p>
 						</div>
 					</div>
 				</div>
