@@ -354,6 +354,12 @@ button:focus {
 
 .about-section-box .img-fluid {
     box-shadow: 20px 20px 0px #d65106;
+    width: 500px;
+    /* largura da imagem */
+    height: 350px;
+    /*  altura da imagem  */
+    margin-top: 10px;
+    /* margem do topo */
 }
 
 .inner-column {
@@ -1079,12 +1085,18 @@ button:focus {
     display: block;
 }
 
+.feedStyle {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+
 .blog-box-inner .blog-detail {
     position: absolute;
     top: 0;
-    background: #fff;
+    background: #f1f1f127;
     padding: 30px 25px;
-    border: 1px solid #ddd;
+    border: 0px solid #ddd;
     transition-duration: .5s;
     height: 100%;
 }
@@ -1114,6 +1126,7 @@ button:focus {
 }
 
 .blog-detail p {
+    width: 680px;
     padding: 10px 0px 0 0;
     margin: 0px;
     font-size: 13px;

@@ -19,7 +19,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-   <title>Live Dinner Restaurant - Responsive HTML5 Template</title>  
+   <title>Receita Fácil </title>  
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -70,13 +70,13 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Todas as Receitas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Doces</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Massas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Carnes</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Saladas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Guarnições</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Drinks</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=1">Doces</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=3">Carnes</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=4">Saladas</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=5">Guarnições</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=6">Drinks</a></li><br>
             <li class="nav-item"><a class="nav-link" href="principal.php">Contato</a></li><br>
             <li class="nav-item"><a class="nav-link" href="../index.php">Sair</a></li><br>
             <li>

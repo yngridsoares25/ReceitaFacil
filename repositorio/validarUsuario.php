@@ -22,6 +22,7 @@ $email = $_GET['email'];
                session_start();
                $_SESSION['username'] = $email;
                $_SESSION['nome'] = $resultado["nome"];
+               $_SESSION['usuarioId'] = $resultado["id"];
                
                header('Location: ../pages/principal.php');
            }else{

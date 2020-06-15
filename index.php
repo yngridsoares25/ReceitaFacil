@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Login</title>
+    <title>Receita Fácil </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -41,6 +41,25 @@
        if(isset($_GET['mensagemOK'])){
              echo "<div class='alert alert-success' role='alert'>"  .$_GET['mensagemOK']."</div>";
         }
+        if(isset($_GET['sair'])){
+            session_start();
+
+            // Apaga todas as variáveis da sessão
+            $_SESSION = array();
+
+            // Se é preciso matar a sessão, então os cookies de sessão também devem ser apagados.
+            // Nota: Isto destruirá a sessão, e não apenas os dados!
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+
+            // Por último, destrói a sessão
+            session_destroy();
+       }
 ?>
 <body class="gray-bg">
 

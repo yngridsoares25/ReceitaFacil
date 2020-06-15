@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">   
    
    <!-- Mobile Metas -->
@@ -41,7 +41,13 @@
    <!-- Custom CSS -->
    <link rel="stylesheet" href="css/custom.css">
   <link href="css/style.css" rel="stylesheet">
+  <script>
 
+	setTimeout(function() { 
+		$(".alert").alert('close');
+	}, 5000);
+
+	</script>
 </head>
 <?php 
       session_start();
@@ -49,6 +55,14 @@
        if(!isset($_SESSION['username'])){
           header('Location: ../index.php?mensagem=Usuário não logado!');
        }
+	   
+	   if(isset($_GET['mensagem'])){
+		echo "<div class='alert alert-warning' role='alert'>"  .$_GET['mensagem']."</div>";
+		}
+
+		if(isset($_GET['mensagemOK'])){
+				echo "<div class='alert alert-success' role='alert'>"  .$_GET['mensagemOK']."</div>";
+		}
 
 
 ?>
@@ -72,19 +86,19 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Todas as Receitas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Doces</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Massas</a></li><br>
-			<li class="nav-item "><a class="nav-link" href="principal.php">Carnes</a></li><br>
-			<li class="nav-item "><a class="nav-link" href="principal.php">Saladas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Guarnições</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="principal.php">Drinks</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=1">Doces</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=3">Carnes</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=4">Saladas</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=5">Guarnições</a></li><br>
+            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=6">Drinks</a></li><br>
             <li class="nav-item"><a class="nav-link" href="principal.php">Contato</a></li><br>
             <li class="nav-item"><a class="nav-link" href="../index.php">Sair</a></li><br>
             <li>
                           <div class="dropdown profile-element">
                           <img alt="image" class="rounded-circle" src="../img/profile_small.jpg"/></br>
-                          <span class="block m-t-xs font-bold"> <?php echo $_SESSION['nome']?> </span>
+                          <span class="block m-t-xs font-bold"> <?php echo $_SESSION['nome'];?> </span>
                           </div>
             </li>             
         
@@ -120,33 +134,32 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12 col-xs-12">
 					<div class="contact-block">
-						<form id="contactForm">
+						<form id="receitaForm" action="../repositorio/inserirReceita.php" enctype="multipart/form-data" method="POST">
 							<div class="row">
 								<div class="col-md-6">
 									<h3>Informações da Receita</h3>
 									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" id="nomeReceita" name="nomeReceita" placeholder="Nome da Receita" required data-error="Informe o nome da receita!">
+											<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da Receita" required data-error="Informe o nome da receita!">
 											<div class="help-block with-errors"></div>
 										</div>                                 
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" placeholder="Porção para quantas pessoas?" id="porcaoPessoa" class="form-control" name="porcaoPessoa" required data-error="Informe a quantidade de porções por pessoa!">
+											<input type="text" placeholder="Porção para quantas pessoas?" id="qtdPorcaoPessoa" class="form-control" name="qtdPorcaoPessoa" required data-error="Informe a quantidade de porções por pessoa!">
 											<div class="help-block with-errors"></div>
 										</div> 
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<select class="custom-select d-block form-control" id="person" required data-error="Please select Person">
+											<select class="custom-select d-block form-control" id="codCategoria" name="codCategoria" required data-error="Please select Person">
 											  <option disabled selected>Categoria</option>
-											  <option value="1">Alimentação Saudável</option>
-											  <option value="2">Doces</option>
-											  <option value="3">Massas</option>
-											  <option value="4">Carnes</option>
-											  <option value="5">Saladas</option>
-											  <option value="6">Guarnições</option>
-											  <option value="7">Drinks</option>
+											  <option value="1">Doces</option>
+											  <option value="2">Massas</option>
+											  <option value="3">Carnes</option>
+											  <option value="4">Saladas</option>
+											  <option value="5">Guarnições</option>
+											  <option value="6">Drinks</option>
 											</select>
 											<div class="help-block with-errors"></div>
 										</div> 
@@ -162,7 +175,7 @@
 									</div>
 									<div class="col-md-12">
 									<div class="form-group">
-											<select class="custom-select d-block form-control" id="person" required data-error="Please select Person">
+											<select class="custom-select d-block form-control" id="codTipoPreparo" name="codTipoPreparo" required data-error="Please select Person">
 											  <option disabled selected>Tipo de Cozimento</option>
 											  <option value="1">Assado</option>
 											  <option value="2">Grelhado</option>
@@ -174,7 +187,10 @@
 										</div>  
 									</div>
 									<div class="col-md-12">
-										
+									<div class="form-group">
+											<input type="file" class="form-control" id="foto" name="foto" placeholder="Foto da receita" required data-error="Infome a foto da receita!">
+											<div class="help-block with-errors"></div>
+										</div>    
 									</div>
 								</div>
 								
@@ -184,7 +200,7 @@
 							</div>
 							<div class="col-md-12">
 								<div class="form-group"> 
-									<textarea class="form-control" id="ingredientes" placeholder="Ingredientes e mais detalhes" rows="10" data-error="Escreva sobre sua receita" required></textarea>
+									<textarea class="form-control" id="txtDescricaoReceita" name="txtDescricaoReceita" placeholder="Ingredientes e mais detalhes" rows="6" data-error="Escreva sobre sua receita" required></textarea>
 									<div class="help-block with-errors"></div>
 								</div>
 								<div class="submit-button text-center">
@@ -194,6 +210,7 @@
 								</div>
 							</div>           
 						</form>
+
 					</div>
 				</div>
 			</div>
