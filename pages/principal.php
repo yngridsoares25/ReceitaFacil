@@ -69,15 +69,14 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
+			<li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
+			<li class="nav-item <?php if( $_GET["MinhasReceita"] > 0 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?MinhasReceita=1&filtro=999">Minhas Receitas</a></li><br>
             <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
 			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=1">Doces</a></li><br>
             <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
 			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=3">Carnes</a></li><br>
 			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=4">Saladas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=5">Guarnições</a></li><br>
             <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=6">Drinks</a></li><br>
-            <li class="nav-item"><a class="nav-link" href="principal.php">Contato</a></li><br>
             <li class="nav-item"><a class="nav-link" href="../index.php">Sair</a></li><br>
             <li>
                           <div class="dropdown profile-element">
@@ -115,7 +114,7 @@
 						<div class="col-md-12">
             <h1 class="m-b-20"><strong>Bem vindo ao  <br> Receita fácil</strong></h1>
 							<p class="m-b-40">Aproveita as receitas de outras pessoas ! <br> 
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Ver receitas</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="listaReceita.php">Ver receitas</a></p>
 						</div>
 					</div>
 				</div>

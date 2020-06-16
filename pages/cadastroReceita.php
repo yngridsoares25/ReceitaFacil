@@ -85,15 +85,14 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
+			<li class="nav-item active"><a class="nav-link" href="principal.php">Home</a></li><br>
+			<li class="nav-item <?php if( $_GET["MinhasReceita"] > 0 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?MinhasReceita=1&filtro=999">Minhas Receitas</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
             <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=1">Doces</a></li><br>
             <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
 			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=3">Carnes</a></li><br>
 			<li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=4">Saladas</a></li><br>
-            <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=5">Guarnições</a></li><br>
             <li class="nav-item "><a class="nav-link" href="../pages/listaReceita.php?filtro=6">Drinks</a></li><br>
-            <li class="nav-item"><a class="nav-link" href="principal.php">Contato</a></li><br>
             <li class="nav-item"><a class="nav-link" href="../index.php">Sair</a></li><br>
             <li>
                           <div class="dropdown profile-element">
@@ -158,7 +157,6 @@
 											  <option value="2">Massas</option>
 											  <option value="3">Carnes</option>
 											  <option value="4">Saladas</option>
-											  <option value="5">Guarnições</option>
 											  <option value="6">Drinks</option>
 											</select>
 											<div class="help-block with-errors"></div>
@@ -179,7 +177,7 @@
 											  <option disabled selected>Tipo de Cozimento</option>
 											  <option value="1">Assado</option>
 											  <option value="2">Grelhado</option>
-											  <option value="3">Crú</option>
+											  <option value="3">Cozido</option>
 											  <option value="4">Ao vapor</option>
 											  <option value="5">Defumado</option>
 											</select>

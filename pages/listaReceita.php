@@ -71,7 +71,20 @@
     <!-- Start header -->
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<?php 	if(isset($_GET["filtro"])){ $filtroMenu = $_GET["filtro"];}else{$filtroMenu = 0;}?>
+		<?php 	
+			if(isset($_GET["filtro"])){
+					 $filtroMenu = $_GET["filtro"];
+			}else{
+				$filtroMenu = 0;
+			}
+			
+			
+			$idUsuario = $_SESSION['usuarioId'];
+			if(isset($_GET["MinhasReceita"])){	
+				$filtroMenu = 999;
+			}	
+		
+		?>
 			<div class="container col-md-11">
 
        
@@ -85,14 +98,13 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-            <li class="nav-item "><a class="nav-link" href="principal.php">Home</a></li><br>
+			<li class="nav-item "><a class="nav-link" href="principal.php">Home</a></li><br>
+			<li class="nav-item <?php if( $_GET["MinhasReceita"] > 0 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?MinhasReceita=1&filtro=999">Minhas Receitas</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 0 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 1 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=1">Doces</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 2 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
 			<li class="nav-item <?php if( $filtroMenu == 4 ) { echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=4">Saladas</a></li><br>
-            <li class="nav-item <?php if( $filtroMenu == 5 ) { echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=5">Guarnições</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 6 ) { echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=6">Drinks</a></li><br>
-            <li class="nav-item"><a class="nav-link" href="principal.php">Contato</a></li><br>
             <li class="nav-item"><a class="nav-link" href="../index.php?sair=1">Sair</a></li><br>
             <li>
                           <div class="dropdown profile-element">
@@ -113,10 +125,12 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<h1>Lista de Receitas</h1>
+					
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- End All Pages -->
 	<!-- Start slides -->	
 	
@@ -130,13 +144,14 @@
 				</div>
 			</div>
 			
+			
 			<?php 
 				
 				if(isset($_GET["filtro"])){
 					$filtro = $_GET["filtro"];	
-					consultarReceita($filtro);
+					consultarReceita($filtro,$idUsuario );
 				}else{
-					consultarReceita(null);
+					consultarReceita(null,null);
 				}	
 			?>
 		</div>
@@ -148,7 +163,7 @@
 	<?php
 	
 	
-		function imprimirReceita($nomeReceita, $qtdPorcaoPessoa, $codCategoria,$tempoPreparo, $codTipoPreparo,$txtDescricaoReceita, $nomeUsuarioCriador,$id){
+		function imprimirReceita($nomeReceita, $qtdPorcaoPessoa, $codCategoria,$tempoPreparo, $codTipoPreparo,$txtDescricaoReceita, $nomeUsuarioCriador,$id,$minhaReceita){
 
 			
 				echo "<div class='row feedStyle'> ";
@@ -167,6 +182,11 @@
 				echo "					<li><span>Tempo de preparo:".$tempoPreparo . "</span></li> ";
 				echo "				</ul> ";
 				echo "				<p>" . $txtDescricaoReceita  . "</p> ";
+				
+				if($minhaReceita == 1){
+					echo "			<a class='btn btn-lg btn-circle btn-outline-new-white' href='../repositorio/excluirReceita.php?id=". $id ."'>Excluir</a>";
+					echo "			<a class='btn btn-lg btn-circle btn-outline-new-white' href='#'>Editar</a>";
+				}
 				echo "			</div> ";
 				echo "		</div> ";
 				echo "	</div> " ;
@@ -177,7 +197,7 @@
 
 	
 
-		function consultarReceita($filtro){
+		function consultarReceita($filtro,$idUsuario ){
 			$nome_servidor="35.205.150.43";
 			$nome_usuario = "root";
 			$senha = "c8h2p6m5";
@@ -185,13 +205,17 @@
 			 if($conecta ->connect_error){
 				 die("Conexão falhou:".$conecta->connet_error."<br>");
 			 }
-	
-		   
-			if($filtro != null )
-				 $sql = "SELECT * FROM cadastro_form.receita  as rc join cadastro_form.dados_pessoais as  dp on dp.id = rc.idUsuarioCriador  where codCategoria = " .$filtro ;
-			else
-				$sql = "SELECT * FROM cadastro_form.receita  as rc join cadastro_form.dados_pessoais as  dp on dp.id = rc.idUsuarioCriador ";
 			
+			 if($idUsuario != null ){
+				$minhaReceita=1;
+				$sql = "SELECT * FROM cadastro_form.receita  as rc join cadastro_form.dados_pessoais as  dp on dp.id = rc.idUsuarioCriador  where idUsuarioCriador = " .$idUsuario  ;
+			 }else{
+				$minhaReceita=0;
+					if($filtro != null )
+						$sql = "SELECT * FROM cadastro_form.receita  as rc join cadastro_form.dados_pessoais as  dp on dp.id = rc.idUsuarioCriador  where codCategoria = " .$filtro ;
+					else
+						$sql = "SELECT * FROM cadastro_form.receita  as rc join cadastro_form.dados_pessoais as  dp on dp.id = rc.idUsuarioCriador ";
+			}
 				
 				
 		   $resultado = $conecta->query($sql);
@@ -202,7 +226,7 @@
 				for ($i=1; $i <= $resultado->num_rows; $i++) {
 		
 					$followingdata = $resultado->fetch_assoc();
-					imprimirReceita($followingdata['nomeReceita'], $followingdata['qtdPorcaoPessoa'], $followingdata['codCategoria'],$followingdata['tempoPreparo'], $followingdata['codTipoPreparo'],$followingdata['txtDescricaoReceita'], $followingdata['nome'],$followingdata['idReceita']);
+					imprimirReceita($followingdata['nomeReceita'], $followingdata['qtdPorcaoPessoa'], $followingdata['codCategoria'],$followingdata['tempoPreparo'], $followingdata['codTipoPreparo'],$followingdata['txtDescricaoReceita'], $followingdata['nome'],$followingdata['idReceita'],$minhaReceita);
 					
 				}
 
