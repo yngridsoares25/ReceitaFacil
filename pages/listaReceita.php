@@ -102,7 +102,8 @@
 			<li class="nav-item <?php if( $_GET["MinhasReceita"] > 0 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?MinhasReceita=1&filtro=999">Minhas Receitas</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 0 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php">Todas as Receitas</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 1 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=1">Doces</a></li><br>
-            <li class="nav-item <?php if( $filtroMenu == 2 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
+			<li class="nav-item <?php if( $filtroMenu == 2 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=2">Massas</a></li><br>
+			<li class="nav-item <?php if( $filtroMenu == 3 ){ echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=3">Carnes</a></li><br>
 			<li class="nav-item <?php if( $filtroMenu == 4 ) { echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=4">Saladas</a></li><br>
             <li class="nav-item <?php if( $filtroMenu == 6 ) { echo 'active';}?>"><a class="nav-link" href="../pages/listaReceita.php?filtro=6">Drinks</a></li><br>
             <li class="nav-item"><a class="nav-link" href="../index.php?sair=1">Sair</a></li><br>
@@ -147,12 +148,20 @@
 			
 			<?php 
 				
-				if(isset($_GET["filtro"])){
-					$filtro = $_GET["filtro"];	
-					consultarReceita($filtro,$idUsuario );
+				if( isset($_GET["MinhasReceita"]) ){
+					if(isset($_GET["filtro"])){
+						$filtro = $_GET["filtro"];	
+						consultarReceita($filtro,$idUsuario );	
+					}	
 				}else{
-					consultarReceita(null,null);
+					if(isset($_GET["filtro"])){
+						$filtro = $_GET["filtro"];	
+						consultarReceita($filtro,null );
+					}else{
+						consultarReceita(null,null);
+					}	
 				}	
+			
 			?>
 		</div>
 	</div>

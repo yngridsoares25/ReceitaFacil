@@ -76,7 +76,7 @@
 
                 </div>
                 <h3 style="color: coral;"> Bem vindo ao Receita Fácil+</h3>
-                <p style="color: coral;">O portal de receitas mais simplés do Brasil.
+                <p style="color: coral;">O portal de receitas mais simples do Brasil.
                     <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
                 </p>
                 <p style="color:honeydew">Entrar</p>
